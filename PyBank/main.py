@@ -21,7 +21,7 @@ with open(py_bank_csv, 'r') as csv_file:
     csv_header = next(csv_reader)
     print(f"CSV Header: {csv_header}")
     for line in csv_reader:
-        #Calculates total months values (trying to count how many rows are in the list)
+        #Calculates total months values
         months_list.append(f"{line[0]}")
         profit_losses.append(f"{line[1]}")
         date.append(f"{line[0]}")
@@ -50,7 +50,7 @@ with open(py_bank_csv, 'r') as csv_file:
     #Prints Total profit/losses summed up together
     profit_losses =[ int(x) for x in profit_losses]
     print("Total: $", sum(profit_losses))
-    #Prints Rev Changes --------------------------------------------------------------MONTHS ARE OFF
+    #Prints Rev Changes 
     print("Average Change: " + avg_rev_change_date, avg_rev_change)
     print("Greatest Increase in Profits: " + max_rev_change_date, max_rev_change)
     print("Greastest Decrease in Profits: " + min_rev_change_date, min_rev_change)
