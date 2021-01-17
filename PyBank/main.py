@@ -3,7 +3,7 @@ import os
 import csv
 
 #telling Python where to access the csv data base to read it
-py_bank_csv = os.path.join('PyBank/resources/budget_data.csv')
+py_bank_csv = os.path.join("PyBank", "resources", "budget_data.csv")
 
 #lists to store months and profit/losses values
 months_list = []
@@ -39,9 +39,6 @@ with open(py_bank_csv, 'r') as csv_file:
         avg_rev_change_date = str(date[rev_change.index(max(rev_change))+1])
         max_rev_change_date = str(date[rev_change.index(max(rev_change))+1])
         min_rev_change_date = str(date[rev_change.index(min(rev_change))+1])
-    #change_index = 
-    print(rev_change.index(max(rev_change)))
-    print(date[24])
 
     #BEGINNING OF TERMINAL OUTPUT
     #Prints "Financial Analysis"
@@ -58,36 +55,33 @@ with open(py_bank_csv, 'r') as csv_file:
     print("Greatest Increase in Profits: " + max_rev_change_date, max_rev_change)
     print("Greastest Decrease in Profits: " + min_rev_change_date, min_rev_change)
 
-#print(len(date))
-#print(len(rev_change))
-#for i in zip(date, rev_change):
-    #print(i)
+#Output answers to txt file
+#Define Output File Path
+pybank_output_path = os.path.join("PyBank", "analysis", "pyBank_analysis.txt")
+outputfile = open(pybank_output_path, "x")
+outputfile.write("Financial Analysis\n")
+outputfile.write("----------------------------\n")
+outputfile.write("Total Months: ")
+outputfile.write(str(len(months_list)))
+outputfile.write("\n")
+outputfile.write("Total: $")
+outputfile.write(str(sum(profit_losses)))
+outputfile.write("\n")
+outputfile.write("Average Change: $")
+outputfile.write(str(avg_rev_change))
+outputfile.write("\n")
+outputfile.write("Greatest Increase in Profits: ")
+outputfile.write(str(max_rev_change_date))
+outputfile.write("  $")
+outputfile.write(str(max_rev_change))
+outputfile.write("\n")
+outputfile.write("Greatest Decrease in Profits: ")
+outputfile.write(str(min_rev_change_date))
+outputfile.write("  $")
+outputfile.write(str(min_rev_change))
+outputfile.write("\n")
 
-
-#OUTPUT FILE (File IO Error, used to work before updating reader code)--------------------------ASK
-#Specify Output File Path
-pybank_output = os.path.join("PyBank", "analysis", "PyBank_analysis.csv" )
-#Open the output file using "write" mode.
-with open (pybank_output, "w", newline='') as pybank_analysis:
-    #Initialize csv.writer
-    csv_writer = csv.writer(pybank_analysis, delimiter = ',')
-
-    #write in what the output should look like here
-    #"Financial Analysis"
-    csv_writer.writerow(months_list)
-    #Dashes to separate the title
-    csv_writer.writerow('----------------------------')
-    #Print "Total Months: "
-
-    #Print Total:
-
-    #Print Average Change:
-
-    #Print Greatest Increase in Profits:
-
-    #Prints Greatest Decrease in Profits
-
-#WHAT THE OUTPUT SHOULD LOOK LIKE IN THE CSV FILE AND TERMINAL
+#WHAT THE OUTPUT SHOULD LOOK LIKE IN THE TXT FILE AND TERMINAL
 #Financial Analysis
 #----------------------------
 #Total Months: 86
