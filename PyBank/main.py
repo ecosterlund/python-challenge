@@ -27,8 +27,7 @@ with open(py_bank_csv, 'r') as csv_file:
         date.append(f"{line[0]}")
     #Calculates Changes in Revenue
     for i in range(1,len(profit_losses)):
-        #Conditional for catching the candidate's name
-        #if candidate != 
+        #Starts comparison of profits/losses from previous row
         profit_losses = [ int(i) for i in profit_losses]
         rev_change.append(profit_losses[i] - profit_losses[i-1])
         #Calculates Average Revenue change
