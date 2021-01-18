@@ -32,11 +32,6 @@ with open(py_poll_csv, 'r') as csv_file:
     correy_votes = content.count("Correy")
     #Calculates total votes
     total_votes = khan_votes + li_votes + correy_votes + otooley_votes
-    #Prints individual vote numbers
-    #print(khan_votes)
-    #print(otooley_votes)
-    #print(li_votes)
-    #print(correy_votes)
     #Calculates Khan Vote Percentage
     khan_vote_percent = round(((khan_votes / total_votes) * 100), 2)
     #Calculates Correy Vote Percentage
@@ -45,8 +40,6 @@ with open(py_poll_csv, 'r') as csv_file:
     li_vote_percent = round(((li_votes / total_votes) * 100), 2)
     #Calculates O'Tooley Vote Percentage
     otooley_vote_percent = round(((otooley_votes / total_votes) * 100), 2)
-    #print(khan_vote_percent)
-
     #PRINT OUTPUT TO TERMINAL HERE
     #Print "Election Results"
     print("Election Results")
@@ -65,7 +58,55 @@ with open(py_poll_csv, 'r') as csv_file:
     print("Li: " + str(li_vote_percent) + "%" " (" + str(li_votes) + ")")
     #Print O'Tooley results to terminal
     print("O'Tooley: " + str(otooley_vote_percent) + "%" " (" + str(otooley_votes) + ")")
-    
+
+
+#OUTPUT ANALYSIS TO TXT FILE IN "ANALYSIS" FOLDER
+#Define Output File Path
+pypoll_output_path = os.path.join("PyPoll", "analysis", "pyPoll_analysis.txt")
+outputfile = open(pypoll_output_path, "x")
+#Prints Title
+outputfile.write("Election Results\n")
+outputfile.write("----------------------------\n")
+#Prints Total Votes Section
+outputfile.write("Total Votes: ")
+outputfile.write(str(total_votes))
+outputfile.write("\n")
+outputfile.write("----------------------------\n")
+#Prints Khan's Results
+outputfile.write("Khan: ")
+outputfile.write(str(khan_vote_percent))
+outputfile.write("% (")
+outputfile.write(str(khan_votes))
+outputfile.write(")")
+outputfile.write("\n")
+#Prints Correy's Results
+outputfile.write("Correy: ")
+outputfile.write(str(correy_vote_percent))
+outputfile.write("% (")
+outputfile.write(str(correy_votes))
+outputfile.write(")")
+outputfile.write("\n")
+#Prints Li's Results
+outputfile.write("Li: ")
+outputfile.write(str(li_vote_percent))
+outputfile.write("% (")
+outputfile.write(str(li_votes))
+outputfile.write(")")
+outputfile.write("\n")
+#Prints O'Tooleys's Results
+outputfile.write("O'Tooley: ")
+outputfile.write(str(otooley_vote_percent))
+outputfile.write("% (")
+outputfile.write(str(otooley_votes))
+outputfile.write(")")
+outputfile.write("\n")
+outputfile.write("----------------------------\n")
+#Prints Winner Value
+outputfile.write("Winner: ")
+#outputfile.write("Khan\n")
+outputfile.write("----------------------------\n")
+
+
 #OUTPUT TO TERMINAL AND CSV FILE SHOULD LOOK LIKE THIS
 #Election Results
 #-------------------------
