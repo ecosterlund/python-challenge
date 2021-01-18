@@ -27,10 +27,12 @@ with open(py_bank_csv, 'r') as csv_file:
         date.append(f"{line[0]}")
     #Calculates Changes in Revenue
     for i in range(1,len(profit_losses)):
+        #Conditional for catching the candidate's name
+        #if candidate != 
         profit_losses = [ int(i) for i in profit_losses]
         rev_change.append(profit_losses[i] - profit_losses[i-1])
         #Calculates Average Revenue change
-        avg_rev_change = sum(rev_change)/len(rev_change)
+        avg_rev_change = round((sum(rev_change)/len(rev_change)), 2)
         #Calculates Greatest increase in profits
         max_rev_change = max(rev_change)
         #Calculates Greatest Decrease in profits
@@ -55,7 +57,7 @@ with open(py_bank_csv, 'r') as csv_file:
     print("Greatest Increase in Profits: " + max_rev_change_date, max_rev_change)
     print("Greastest Decrease in Profits: " + min_rev_change_date, min_rev_change)
 
-#Output answers to txt file
+#OUTPUT ANALYSIS TO TXT FILE IN "ANALYSIS" FOLDER
 #Define Output File Path
 pybank_output_path = os.path.join("PyBank", "analysis", "pyBank_analysis.txt")
 outputfile = open(pybank_output_path, "x")

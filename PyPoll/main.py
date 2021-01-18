@@ -6,18 +6,12 @@ import csv
 py_poll_csv = os.path.join("PyPoll", "resources", "election_data.csv")
 
 #Lists/Variables to store calculations
-voter_id = []
-county = []
-candidate = []
-total_votes = [len(voter_id)]
-candidate_who_got_votes = []
-percent_votes_won = []
-total_votes_per_candidate = []
+total_votes = []
 winner = []
-#Defining function to calculate and print precentage of vote won for each candidate and store them in a dictionary?-------NECESSARY?
-#def print_percentages(election_data):
-    #Find total number of votes per candidate
-    #Find percentage of votes received/total
+khan_votes = []
+otooley_votes=[]
+correy_votes=[]
+li_votes = []
 
 #READ INPUT FILE: budget_data.csv
 #open the file as a csv file to read
@@ -26,67 +20,52 @@ with open(py_poll_csv, 'r') as csv_file:
     #skip header
     csv_header = next(csv_reader)
     print(f"CSV Header: {csv_header}")
-    for line in csv_reader:
-        #USE ZIPS TO MAKE FINDING VALUES EASIER?
-        voter_id.append(f"{line[0]}")
-        county.append(f"{line[1]}")
-        candidate.append(f"{line[2]}")
-    #for i in range(1,len(voter_id)):
-        #Calculate
-        #Complete list of candidates who received votes (conditional to weed out those who didn't get any?)
-        #Calculates Percentage of votes each candidate won
-        #percent_votes_won = (total_votes_per_candidate/len(voter_id)) * 100))
-        #Calculates total number of votes each candidate won (Use if statement like if name == candidate's name, calculate and store into variable for that candidate)
-
-        #Winner of election (conditional for finding who has the most votes)
+    #Define content from csv to count for each candidate
+    content = csv_file.read()
+    #Counts the amount of times "Khan" appears in the list
+    khan_votes = content.count("Khan")
+    #Counts the amount of times "O'Tooley" appears in the list
+    otooley_votes = content.count("O'Tooley")
+    #Counts the amount of times "Li" appears in the list
+    li_votes = content.count("Li")
+    #Counts the amount of times "Correy" appears in the list
+    correy_votes = content.count("Correy")
+    #Calculates total votes
+    total_votes = khan_votes + li_votes + correy_votes + otooley_votes
+    #Prints individual vote numbers
+    #print(khan_votes)
+    #print(otooley_votes)
+    #print(li_votes)
+    #print(correy_votes)
+    #Calculates Khan Vote Percentage
+    khan_vote_percent = round(((khan_votes / total_votes) * 100), 2)
+    #Calculates Correy Vote Percentage
+    correy_vote_percent = round(((correy_votes / total_votes) * 100), 2)
+    #Calculates Li Vote Percentage
+    li_vote_percent = round(((li_votes / total_votes) * 100), 2)
+    #Calculates O'Tooley Vote Percentage
+    otooley_vote_percent = round(((otooley_votes / total_votes) * 100), 2)
+    #print(khan_vote_percent)
 
     #PRINT OUTPUT TO TERMINAL HERE
     #Print "Election Results"
     print("Election Results")
     #Print ----- to seperate title
     print("-------------------------")
+    #total_votes = len(list(csv_reader))----------Gives 0 value for all other individual votes
     #Print Total Votes
-    total_votes = len(voter_id)
     print("Total Votes: " + str(total_votes))
     #Print ----- to seperate votes from rest of data
     print("-------------------------")
-    #Print list of each candidate, vote percentage, and total votes per candidate (utilize zip folders for finding values?)
-
-    #Print ---- to seperate winner
-    #print("-------------------------")
-    #Print Winner's Name
-
-    #Print ---- to end terminal output
-    #print("-------------------------")
-
-#OUTPUT FILE
-#Specify Output File Path
-#pypoll_output = os.path.join('PyPoll/analysis/pypoll_analysis.csv')
-#Open the output file using "write" mode.
-#with open (pypoll_output, "w", newline='') as pypoll_analysis:
-    #Initialize csv.writer
-    #csv_writer = csv.writer(pypoll_analysis)
-
-    #write in what the output should look like here
-    #Print "Election Results"
-
-    #Print Dashes to separate title
-
-    #Print Total Votes:
-
-    #Print Dashes to separate title
-
-    #Print List of candidates with Name, percent of vote, and total votes they had
-    #--------MAYBE USE DICTIONARY??-----
-
-    #Print Dashes to separate analysis from the winner
-
-    #Print the winner of the election
-
-    #Print Dashes to end the analysis
-
-
-
+    #Print Khan results to terminal
+    print("Khan: " + str(khan_vote_percent) + "%" " (" + str(khan_votes) + ")")
+    #Print Correy results to terminal
+    print("Correy: " + str(correy_vote_percent) + "%" " (" + str(correy_votes) + ")")
+    #Print Li results to terminal
+    print("Li: " + str(li_vote_percent) + "%" " (" + str(li_votes) + ")")
+    #Print O'Tooley results to terminal
+    print("O'Tooley: " + str(otooley_vote_percent) + "%" " (" + str(otooley_votes) + ")")
+    
 #OUTPUT TO TERMINAL AND CSV FILE SHOULD LOOK LIKE THIS
 #Election Results
 #-------------------------
