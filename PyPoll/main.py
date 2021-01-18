@@ -54,7 +54,6 @@ with open(py_poll_csv, 'r') as csv_file:
     print("Election Results")
     #Print ----- to seperate title
     print("-------------------------")
-    #total_votes = len(list(csv_reader))----------Gives 0 value for all other individual votes
     #Print Total Votes
     print("Total Votes: " + str(total_votes))
     #Print ----- to seperate votes from rest of data
