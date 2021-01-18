@@ -40,6 +40,15 @@ with open(py_poll_csv, 'r') as csv_file:
     li_vote_percent = round(((li_votes / total_votes) * 100), 2)
     #Calculates O'Tooley Vote Percentage
     otooley_vote_percent = round(((otooley_votes / total_votes) * 100), 2)
+    #If statements to find out who won
+    if (khan_votes > otooley_votes and khan_votes > li_votes and khan_votes > correy_votes):
+        winner = "Khan"
+    elif (otooley_votes> khan_votes and otooley_votes > li_votes and otooley_votes >correy_votes):
+        winner = "O'Tooley"
+    elif (correy_votes> khan_votes and correy_votes > li_votes and correy_votes> otooley_votes):
+        winner = "Correy"
+    elif (li_votes> khan_votes and li_votes > correy_votes and li_votes> otooley_votes):
+        winner = "O'Tooley"
     #PRINT OUTPUT TO TERMINAL HERE
     #Print "Election Results"
     print("Election Results")
@@ -103,19 +112,6 @@ outputfile.write("\n")
 outputfile.write("----------------------------\n")
 #Prints Winner Value
 outputfile.write("Winner: ")
-#outputfile.write("Khan\n")
+outputfile.write(winner)
+outputfile.write("\n")
 outputfile.write("----------------------------\n")
-
-
-#OUTPUT TO TERMINAL AND CSV FILE SHOULD LOOK LIKE THIS
-#Election Results
-#-------------------------
-#Total Votes: 3521001
-#-------------------------
-#Khan: 63.000% (2218231)
-#Correy: 20.000% (704200)
-#Li: 14.000% (492940)
-#O'Tooley: 3.000% (105630)
-#-------------------------
-#Winner: Khan
-#----------------------
