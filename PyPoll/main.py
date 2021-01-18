@@ -67,7 +67,10 @@ with open(py_poll_csv, 'r') as csv_file:
     print("Li: " + str(li_vote_percent) + "%" " (" + str(li_votes) + ")")
     #Print O'Tooley results to terminal
     print("O'Tooley: " + str(otooley_vote_percent) + "%" " (" + str(otooley_votes) + ")")
-
+    #Print Winner
+    print("-------------------------")
+    print("Winner: " + winner)
+    print("-------------------------")
 
 #OUTPUT ANALYSIS TO TXT FILE IN "ANALYSIS" FOLDER
 #Define Output File Path
